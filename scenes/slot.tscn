@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://d06yui3ixt0oc"]
+
+[ext_resource type="Script" path="res://scenes/slot.gd" id="1_g5pfd"]
+
+[node name="Slot" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 32.0
+offset_bottom = 32.0
+script = ExtResource("1_g5pfd")

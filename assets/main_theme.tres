@@ -1,0 +1,18 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://ctchcai8s7h1h"]
+
+[ext_resource type="FontFile" uid="uid://btcf0q04wohm5" path="res://assets/fonts/arkhip.regular.ttf" id="1_nm00p"]
+[ext_resource type="StyleBox" uid="uid://baurys0h778ko" path="res://assets/button_style_shadow.tres" id="2_5t2pt"]
+[ext_resource type="StyleBox" uid="uid://bkjn2d2l7wabl" path="res://assets/button_style.tres" id="3_anrxt"]
+[ext_resource type="StyleBox" uid="uid://hqf34l7mj1x8" path="res://assets/panel_style.tres" id="4_gdys2"]
+[ext_resource type="StyleBox" uid="uid://x47tw6wp8ss3" path="res://assets/panel_focus_style.tres" id="5_ia6v6"]
+
+[resource]
+Button/font_sizes/font_size = 38
+Button/fonts/font = ExtResource("1_nm00p")
+Button/styles/hover = ExtResource("2_5t2pt")
+Button/styles/normal = ExtResource("3_anrxt")
+Button/styles/pressed = ExtResource("2_5t2pt")
+Label/font_sizes/font_size = 24
+Label/fonts/font = ExtResource("1_nm00p")
+Panel/styles/panel = ExtResource("4_gdys2")
+Panel/styles/panel_focus = ExtResource("5_ia6v6")

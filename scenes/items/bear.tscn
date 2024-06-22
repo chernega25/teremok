@@ -1,0 +1,78 @@
+[gd_scene load_steps=8 format=3 uid="uid://b8j4q4yl11y7u"]
+
+[ext_resource type="Shader" path="res://assets/item_drag.gdshader" id="1_64efe"]
+[ext_resource type="Script" path="res://scenes/item.gd" id="2_i4ojq"]
+[ext_resource type="PackedScene" uid="uid://t5wuswn5w7ut" path="res://scenes/items/block.tscn" id="3_hgmdb"]
+[ext_resource type="Shader" path="res://assets/black_shape.gdshader" id="4_3tkil"]
+[ext_resource type="Texture2D" uid="uid://bqktys7ult4d7" path="res://assets/art/bear.png" id="5_fuloo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4r218"]
+resource_local_to_scene = true
+shader = ExtResource("1_64efe")
+shader_parameter/drag = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ta22g"]
+shader = ExtResource("4_3tkil")
+shader_parameter/on = false
+
+[node name="Item" type="Control"]
+material = SubResource("ShaderMaterial_4r218")
+layout_mode = 3
+anchors_preset = 0
+offset_right = 128.0
+offset_bottom = 128.0
+mouse_filter = 2
+script = ExtResource("2_i4ojq")
+item_number = 5
+_item_size = Vector2i(4, 4)
+_original_size = Vector2i(4, 4)
+_cells = Array[Vector2i]([Vector2i(1, 0), Vector2i(2, 0), Vector2i(1, 1), Vector2i(2, 1), Vector2i(0, 2), Vector2i(1, 2), Vector2i(2, 2), Vector2i(3, 2), Vector2i(0, 3), Vector2i(1, 3), Vector2i(2, 3), Vector2i(3, 3)])
+
+[node name="ItemOffset" type="Control" parent="."]
+use_parent_material = true
+anchors_preset = 0
+
+[node name="Blocks" type="Control" parent="ItemOffset"]
+use_parent_material = true
+anchors_preset = 0
+
+[node name="Block" parent="ItemOffset/Blocks" instance=ExtResource("3_hgmdb")]
+position = Vector2(32, 0)
+
+[node name="Block2" parent="ItemOffset/Blocks" instance=ExtResource("3_hgmdb")]
+position = Vector2(64, 0)
+
+[node name="Block3" parent="ItemOffset/Blocks" instance=ExtResource("3_hgmdb")]
+position = Vector2(32, 32)
+
+[node name="Block4" parent="ItemOffset/Blocks" instance=ExtResource("3_hgmdb")]
+position = Vector2(64, 32)
+
+[node name="Block5" parent="ItemOffset/Blocks" instance=ExtResource("3_hgmdb")]
+position = Vector2(0, 64)
+
+[node name="Block6" parent="ItemOffset/Blocks" instance=ExtResource("3_hgmdb")]
+position = Vector2(32, 64)
+
+[node name="Block7" parent="ItemOffset/Blocks" instance=ExtResource("3_hgmdb")]
+position = Vector2(64, 64)
+
+[node name="Block8" parent="ItemOffset/Blocks" instance=ExtResource("3_hgmdb")]
+position = Vector2(96, 64)
+
+[node name="Block9" parent="ItemOffset/Blocks" instance=ExtResource("3_hgmdb")]
+position = Vector2(0, 96)
+
+[node name="Block10" parent="ItemOffset/Blocks" instance=ExtResource("3_hgmdb")]
+position = Vector2(32, 96)
+
+[node name="Block11" parent="ItemOffset/Blocks" instance=ExtResource("3_hgmdb")]
+position = Vector2(64, 96)
+
+[node name="Block12" parent="ItemOffset/Blocks" instance=ExtResource("3_hgmdb")]
+position = Vector2(96, 96)
+
+[node name="Animal" type="Sprite2D" parent="ItemOffset"]
+material = SubResource("ShaderMaterial_ta22g")
+texture = ExtResource("5_fuloo")
+centered = false

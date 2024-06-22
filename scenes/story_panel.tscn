@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://d1esrp1t1nk3t"]
+
+[ext_resource type="Theme" uid="uid://ctchcai8s7h1h" path="res://assets/main_theme.tres" id="1_jj7i6"]
+[ext_resource type="Script" path="res://scenes/story_panel.gd" id="2_id5ft"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_jj5ci"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="Shortcut" id="Shortcut_r3six"]
+events = [SubResource("InputEventKey_jj5ci")]
+
+[node name="StoryPanel" type="Panel"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.7
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_jj7i6")
+script = ExtResource("2_id5ft")
+
+[node name="StoryLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.85
+grow_horizontal = 2
+grow_vertical = 2
+text = "Animals found nice house in the forest (teremok) and decided to live together until it becomes so crowded that a bear’s arrival causes it to collapse. Now they found a new house and want you to help them."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+visible_characters_behavior = 1
+
+[node name="ContinueButton" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.35
+anchor_top = 0.9
+anchor_right = 0.65
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+shortcut = SubResource("Shortcut_r3six")
+shortcut_in_tooltip = false
+text = "continue"
+
+[node name="TypingTimer" type="Timer" parent="."]
+wait_time = 0.05
+
+[node name="WaitTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="TypingTimer" to="." method="_on_typing_timer_timeout"]
+[connection signal="timeout" from="WaitTimer" to="." method="_on_wait_timer_timeout"]

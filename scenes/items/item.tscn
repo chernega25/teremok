@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://djff7iw3jhk47"]
+
+[ext_resource type="Shader" path="res://assets/item_drag.gdshader" id="1_vc05p"]
+[ext_resource type="Script" path="res://scenes/item.gd" id="2_4uaww"]
+[ext_resource type="PackedScene" uid="uid://t5wuswn5w7ut" path="res://scenes/items/block.tscn" id="3_is6pe"]
+[ext_resource type="Texture2D" uid="uid://1lh77xw1j2n5" path="res://assets/art/mouse.png" id="4_xronh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4r218"]
+resource_local_to_scene = true
+shader = ExtResource("1_vc05p")
+shader_parameter/drag = false
+
+[node name="Item" type="Control"]
+material = SubResource("ShaderMaterial_4r218")
+layout_mode = 3
+anchors_preset = 0
+offset_right = 64.0
+offset_bottom = 64.0
+mouse_filter = 2
+script = ExtResource("2_4uaww")
+
+[node name="ItemOffset" type="Control" parent="."]
+use_parent_material = true
+anchors_preset = 0
+
+[node name="Blocks" type="Control" parent="ItemOffset"]
+use_parent_material = true
+anchors_preset = 0
+
+[node name="Block" parent="ItemOffset/Blocks" instance=ExtResource("3_is6pe")]
+position = Vector2(32, 0)
+
+[node name="Block2" parent="ItemOffset/Blocks" instance=ExtResource("3_is6pe")]
+position = Vector2(32, 32)
+
+[node name="Block3" parent="ItemOffset/Blocks" instance=ExtResource("3_is6pe")]
+position = Vector2(0, 32)
+
+[node name="Animal" type="Sprite2D" parent="ItemOffset"]
+texture = ExtResource("4_xronh")
+centered = false

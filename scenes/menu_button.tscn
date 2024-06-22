@@ -1,0 +1,82 @@
+[gd_scene load_steps=7 format=3 uid="uid://c6yosn2d42b1i"]
+
+[ext_resource type="Theme" uid="uid://ctchcai8s7h1h" path="res://assets/main_theme.tres" id="1_vy6ob"]
+[ext_resource type="Texture2D" uid="uid://bs4fdpjdgp3yn" path="res://assets/art/menu_icon.png" id="2_2h4xw"]
+[ext_resource type="Script" path="res://scenes/menu_button.gd" id="3_findw"]
+[ext_resource type="StyleBox" uid="uid://c7mscb45p58gx" path="res://assets/menu_style.tres" id="4_4je77"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_ksaqc"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_gyjfk"]
+events = [SubResource("InputEventKey_ksaqc")]
+
+[node name="MenuButton" type="Button"]
+offset_right = 36.0
+offset_bottom = 36.0
+focus_mode = 0
+theme = ExtResource("1_vy6ob")
+toggle_mode = true
+shortcut = SubResource("Shortcut_gyjfk")
+shortcut_in_tooltip = false
+icon = ExtResource("2_2h4xw")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("3_findw")
+
+[node name="Menu" type="Panel" parent="."]
+visible = false
+show_behind_parent = true
+layout_mode = 0
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 192.0
+offset_bottom = 192.0
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("4_4je77")
+
+[node name="LevelLabel" type="Label" parent="Menu"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -156.0
+offset_top = 12.0
+offset_bottom = 48.0
+grow_horizontal = 0
+text = "level 00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DeleteButton" type="Button" parent="Menu"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 60.0
+offset_right = 192.0
+offset_bottom = 96.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 24
+text = "clear house"
+
+[node name="SkipButton" type="Button" parent="Menu"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 108.0
+offset_right = 192.0
+offset_bottom = 144.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 24
+text = "skip level"
+
+[node name="MainMenuButton" type="Button" parent="Menu"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 156.0
+offset_right = 192.0
+offset_bottom = 192.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 24
+text = "main menu"
+
+[connection signal="toggled" from="." to="." method="_on_toggled"]

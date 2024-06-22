@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://t5wuswn5w7ut"]
+
+[ext_resource type="Texture2D" uid="uid://baxr4eq35dajj" path="res://assets/art/animal_tile2.png" id="1_u3la0"]
+
+[node name="Block" type="Sprite2D"]
+use_parent_material = true
+texture = ExtResource("1_u3la0")
+centered = false

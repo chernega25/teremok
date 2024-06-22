@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://b8b386v4yqn1v"]
+
+[ext_resource type="Texture2D" uid="uid://cbebau7wdks2w" path="res://assets/art/house_tile.png" id="2_yabv7"]
+[ext_resource type="Script" path="res://scenes/grid.gd" id="3_rw13j"]
+[ext_resource type="PackedScene" uid="uid://d06yui3ixt0oc" path="res://scenes/slot.tscn" id="4_mosjc"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rdtsl"]
+texture = ExtResource("2_yabv7")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_a2gpj"]
+tile_size = Vector2i(32, 32)
+sources/1 = SubResource("TileSetAtlasSource_rdtsl")
+
+[node name="Grid" type="TileMap"]
+tile_set = SubResource("TileSet_a2gpj")
+format = 2
+layer_0/tile_data = PackedInt32Array(65536, 1, 0, 65537, 1, 0, 1, 1, 0, 2, 1, 0, 65538, 1, 0, 65539, 1, 0)
+script = ExtResource("3_rw13j")
+items_available = 1
+slot_scene = ExtResource("4_mosjc")
