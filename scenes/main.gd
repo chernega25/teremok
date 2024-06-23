@@ -49,9 +49,12 @@ func _adjust_scale():
 	
 	Game.grid_scale = grid_scale
 
-func _next_level():
+func _next_level(prev: bool):
 	get_viewport().gui_release_focus()
-	_current_level += 1
+	if prev:
+		_current_level -= 1
+	else:
+		_current_level += 1
 	_grid = _levels[_current_level].instantiate() as Grid
 	_grid.level_completed.connect(_on_level_completed)
 	_grid.wrong_solution.connect(_on_wrong_solution)
@@ -79,7 +82,7 @@ func _on_start_button_pressed():
 func _on_start_animation_timer_timeout():
 	$ItemMenu.visible = true
 	$MenuButton.visible = true
-	_next_level()
+	_next_level(false)
 	
 func _on_wrong_solution():
 	$GameField/WrongSolutionLabel.visible = true
@@ -92,7 +95,16 @@ func _on_skip():
 	
 	if _current_level < _levels.size() - 1:
 		_grid.queue_free()
-		_next_level()
+		_next_level(false)
+		
+func _on_prev():
+	$GameField/Level1TipLabel.visible = false
+	$GameField/Level2TipLabel.visible = false
+	$GameField/WrongSolutionLabel.visible = false
+	
+	if _current_level > 0:
+		_grid.queue_free()
+		_next_level(true)
 
 func _on_level_completed():
 	$GameField/Level1TipLabel.visible = false
@@ -110,7 +122,7 @@ func _on_level_completed():
 func _on_next_level_button_pressed():
 	play_sfx()
 	_grid.queue_free()
-	_next_level()
+	_next_level(false)
 	$GameField/LevelEndScreen.visible = false
 	$GameField/NextLevelLabel.visible = false
 	$GameField/NextLevelButton.visible = false
@@ -167,3 +179,8 @@ func _on_skip_button_pressed():
 
 func _on_main_menu_button_pressed():
 	_on_end_game_button_pressed()
+
+
+func _on_previous_button_pressed():
+	play_sfx()
+	_on_prev()
